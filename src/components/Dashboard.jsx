@@ -30,7 +30,7 @@ const Dashboard = ({ isDark }) => {
     const socketRef = useRef(null);
 
     useEffect(() => {
-        socketRef.current = io("http://localhost:8080");
+        socketRef.current = io("https://backend-production-0e5a.up.railway.app");
         const socket = socketRef.current;
 
         setIsConnected(socket.connected);
@@ -160,12 +160,12 @@ const Dashboard = ({ isDark }) => {
         <div className="min-h-screen pt-8 pb-12 transition-colors duration-300 overflow-x-hidden bg-background">
             <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
 
-                    <div className="mb-8 flex flex-col md:flex-row md:justify-between md:items-end space-y-6 md:space-y-0">
-                        <div className="flex-1">
-                            <h1 className="text-2xl font-bold tracking-tight text-foreground">Global Flight Operations</h1>
-                            <p className="mt-1 text-sm text-muted-foreground">Live network status and performance metrics.</p>
-                        </div>
-                        <div className="flex flex-col sm:flex-row sm:items-center space-y-4 sm:space-y-0 sm:space-x-4 bg-card/50 p-4 rounded-xl border border-border/50">
+                <div className="mb-8 flex flex-col md:flex-row md:justify-between md:items-end space-y-6 md:space-y-0">
+                    <div className="flex-1">
+                        <h1 className="text-2xl font-bold tracking-tight text-foreground">Global Flight Operations</h1>
+                        <p className="mt-1 text-sm text-muted-foreground">Live network status and performance metrics.</p>
+                    </div>
+                    <div className="flex flex-col sm:flex-row sm:items-center space-y-4 sm:space-y-0 sm:space-x-4 bg-card/50 p-4 rounded-xl border border-border/50">
 
                         <div className="flex items-center space-x-2 border-r pr-4 border-border">
                             <label className="text-sm font-semibold text-muted-foreground whitespace-nowrap">Poll Rate:</label>
