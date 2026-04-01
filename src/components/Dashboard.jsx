@@ -30,7 +30,8 @@ const Dashboard = ({ isDark }) => {
     const socketRef = useRef(null);
 
     useEffect(() => {
-        socketRef.current = io("http://localhost:8080");
+        const backendUrl = process.env.REACT_APP_BACKEND_URL || "http://localhost:8080";
+        socketRef.current = io(backendUrl);
         const socket = socketRef.current;
 
         setIsConnected(socket.connected);
