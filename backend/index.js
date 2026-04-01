@@ -9,7 +9,9 @@ dotenv.config();
 const app = express();
 
 
-const allowedOrigins = ['http://localhost:5173', 'http://localhost:5174'];
+const allowedOrigins = process.env.ALLOWED_ORIGINS 
+    ? process.env.ALLOWED_ORIGINS.split(',') 
+    : ['http://localhost:5173', 'http://localhost:5174'];
 
 app.use(cors({
     origin: function (origin, callback) {
@@ -23,6 +25,10 @@ app.use(cors({
 
 app.get('/health', (req, res) => {
     res.json({ status: 'ok', activeConnections: io.engine.clientsCount });
+});
+
+app.get('/', (req, res) => {
+    res.json({ message: 'WebSocket Server is running', status: 'ok' });
 });
 
 const server = createServer(app);
